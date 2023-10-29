@@ -42,15 +42,15 @@ def main():
     try:
         with open(testfile, "r") as file:
             for line in file:
-                num = int(line.strip())
-                fact = Fact(num)
-                factors = fact.factorisation()
-                if factors is None:
-                    print(f"{num} is a prime number or cannot be factorized")
-                else:
-                    factor1, factor2 = factors
-                    print(f"{num} = {factor2} * {factor1}",end = "")
-                print()
+                numbers = [int(num) for num in line.strip().split(',')]
+                for num in numbers:
+                    fact = Fact(num)
+                    factors = fact.factorisation()
+                    if factors is None:
+                        print(f"{num} is a prime number or cannot be factorized")
+                    else:
+                        factor1, factor2 = factors
+                        print(f"{num} = {factor1} * {factor2}")
     except FileNotFoundError:
         print(f"File '{testfile}' not found.")
     except ValueError:
@@ -58,5 +58,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
