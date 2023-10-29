@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+import sys
+"""
+Factorize as many numbers as possible into
+a product of two smaller numbers.
+
+"""
+class Fact:
+    """
+    initializing the class Fact
+    """
+    def __init__(self, number):
+        """
+        initialize the number value
+        """
+        self.number = number
+
+
+    def factorisation(self):
+        """
+        factorisation method
+        """
+        result = []
+        for i in range (2, int(self.number/2) + 1):
+            if self.number % i == 0 :
+                factor1 = i
+                factor2 = self.number // i
+                return factor1, factor2
+        return None
+
+def main():
+    """
+    main fuction print num = factor1 * factor2 in success
+    Usage: factors <file>
+    """
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        return
+
+    testfile = sys.argv[1]
+
+    try:
+        with open(testfile, "r") as file:
+            for line in file:
+                num = int(line.strip())
+                fact = Fact(num)
+                factors = fact.factorisation()
+                if factors is None:
+                    print(f"{num} is a prime number or cannot be factorized")
+                else:
+                    factor1, factor2 = factors
+                    print(f"{num} = {factor1} * {factor2}")
+    except FileNotFoundError:
+        print(f"File '{testfile}' not found.")
+    except ValueError:
+        print("Invalid number in the file.")
+
+if __name__ == "__main__":
+    main()
+
+
