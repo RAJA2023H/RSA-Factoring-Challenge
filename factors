@@ -50,7 +50,7 @@ def main():
                         print(f"{num} is a prime number or cannot be factorized")
                     else:
                         factor1, factor2 = factors
-                        print(f"{num} = {factor1} * {factor2}")
+                        print(f"{num}={factor1}*{factor2}")
     except FileNotFoundError:
         print(f"File '{testfile}' not found.")
     except ValueError:
