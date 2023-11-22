@@ -27,7 +27,6 @@ class Fact:
                 factor2 = self.number // i
                 return factor1, factor2
         return None
-
 def main():
     """
     main fuction print num = factor1 * factor2 in success
